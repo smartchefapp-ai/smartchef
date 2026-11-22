@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartChef · Cocina con lo que tienes</title>
+  <meta name="description" content="SmartChef crea recetas personalizadas con los ingredientes que ya tienes en casa. Escanea tu refrigerador, elige porciones y cocina en minutos." />
+  <meta name="theme-color" content="#0B0B0F" />
+  <meta property="og:title" content="SmartChef · Cocina con lo que tienes" />
+  <meta property="og:description" content="Recetas con IA a partir de tus ingredientes. Escanea, elige porciones y cocina." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://smartchefapp-ai.github.io/smartchef/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%B3%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --surface: #14141b;
+      --surface-2: #1b1b24;
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #f6f6f8;
+      --muted: #a1a1ad;
+      --flame: #ff6b2c;
+      --flame-2: #ffb03a;
+      --flame-3: #ff3d00;
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(900px 500px at 15% -10%, rgba(255, 107, 44, 0.16), transparent 60%),
+        radial-gradient(700px 420px at 95% 0%, rgba(255, 176, 58, 0.10), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 11, 15, 0.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.15rem;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: linear-gradient(140deg, var(--flame-2), var(--flame-3));
+      box-shadow: 0 8px 24px rgba(255, 61, 0, 0.28);
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .nav-links a { text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #1a0a00;
+      background: linear-gradient(135deg, var(--flame-2), var(--flame));
+      box-shadow: 0 12px 34px rgba(255, 107, 44, 0.30);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(255, 107, 44, 0.40); }
+
+    .btn-ghost {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border);
+    }
+
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.08); }
+
+    .btn-disabled {
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+      border-color: var(--border);
+      cursor: default;
+    }
+
+    .hero {
+      padding: 84px 0 56px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 107, 44, 0.35);
+      background: rgba(255, 107, 44, 0.10);
+      color: var(--flame-2);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(2.4rem, 5.4vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, var(--flame-2), var(--flame) 55%, #ff8a3d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      margin: 0 0 30px;
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 52ch;
+    }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .note {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .phone {
+      position: relative;
+      aspect-ratio: 9 / 17.5;
+      width: min(320px, 100%);
+      margin: 0 auto;
+      border-radius: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, #1c1c25, #101016);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), 0 0 0 8px rgba(255, 255, 255, 0.03);
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .phone::before {
+      content: "";
+      position: absolute;
+      inset: -40% -20% auto;
+      height: 70%;
+      background: radial-gradient(circle at 50% 30%, rgba(255, 107, 44, 0.30), transparent 65%);
+      pointer-events: none;
+    }
+
+    .phone-screen {
+      position: relative;
+      height: 100%;
+      border-radius: 26px;
+      background: #0e0e13;
+      border: 1px solid var(--border);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .chip {
+      font-size: 0.68rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .chip.active {
+      color: var(--flame-2);
+      border-color: rgba(255, 107, 44, 0.55);
+      background: rgba(255, 107, 44, 0.14);
+      font-weight: 700;
+    }
+
+    .fake-card {
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(160deg, rgba(255, 107, 44, 0.10), rgba(255, 255, 255, 0.02));
+      padding: 14px;
+    }
+
+    .fake-card h3 { margin: 0 0 4px; font-size: 0.92rem; }
+    .fake-card p { margin: 0; font-size: 0.72rem; color: var(--muted); }
+
+    .fake-line {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      margin-top: 9px;
+    }
+
+    .fake-line.short { width: 62%; }
+
+    section { padding: 64px 0; }
+
+    .section-head {
+      max-width: 640px;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+      letter-spacing: -0.025em;
+    }
+
+    .section-head p { margin: 0; color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+      padding: 24px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(255, 107, 44, 0.14);
+      border: 1px solid rgba(255, 107, 44, 0.30);
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 { margin: 0 0 8px; font-size: 1.05rem; letter-spacing: -0.01em; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: step; }
+
+    .step {
+      position: relative;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 26px 22px 22px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      font-weight: 800;
+      color: #1a0a00;
+      background: linear-gradient(135deg, var(--flame-2), var(--flame));
+    }
+
+    .step h3 { margin: 0 0 6px; font-size: 1rem; }
+    .step p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+    .download {
+      border-radius: 28px;
+      border: 1px solid rgba(255, 107, 44, 0.28);
+      background:
+        radial-gradient(600px 260px at 20% 0%, rgba(255, 107, 44, 0.22), transparent 65%),
+        linear-gradient(180deg, #191921, #111116);
+      padding: 44px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
+    }
+
+    .download h2 { margin: 0 0 8px; }
+    .download p { margin: 0; color: var(--muted); max-width: 52ch; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 34px 0 46px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 56px; gap: 40px; }
+      .grid, .steps { grid-template-columns: 1fr 1fr; }
+      .phone { width: min(300px, 100%); }
+    }
+
+    @media (max-width: 620px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .grid, .steps { grid-template-columns: 1fr; }
+      .download { padding: 30px 24px; }
+      .btn { width: 100%; }
+      .cta-row { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">🍳</span>
+        <span>SmartChef</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#funciones">Funciones</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="privacy.html">Privacidad</a>
+        <a class="nav-cta" href="#descargar">Descargar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <div>
+        <span class="eyebrow">🔥 Cocina inteligente</span>
+        <h1>Convierte lo que tienes en <span class="gradient-text">una receta increíble</span></h1>
+        <p class="lead">
+          SmartChef mira tu refrigerador, escucha tus ingredientes y diseña una receta
+          a tu medida: porciones exactas, tiempo real y pasos claros. Sin desperdiciar comida.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cooksmart.cooksmart_flutter" rel="noopener">
+            ▶ Descargar en Google Play
+          </a>
+          <span class="btn btn-disabled" aria-disabled="true">🍎 App Store · próximamente</span>
+        </div>
+        <p class="note">Gratis. Sin anuncios que interrumpan tu cocina.</p>
+      </div>
+
+      <div class="phone" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="chip-row">
+            <span class="chip active">30 min</span>
+            <span class="chip">Almuerzo / Cena</span>
+            <span class="chip">Fácil</span>
+          </div>
+          <div class="chip-row">
+            <span class="chip">👥 1</span>
+            <span class="chip active">👥 2</span>
+            <span class="chip">👥 4</span>
+            <span class="chip">👥 6</span>
+          </div>
+          <div class="fake-card">
+            <h3>🍗 Pollo al limón con verduras</h3>
+            <p>Listo en 30 min · 2 porciones</p>
+            <div class="fake-line"></div>
+            <div class="fake-line short"></div>
+          </div>
+          <div class="fake-card">
+            <h3>🧺 Ingredientes</h3>
+            <div class="fake-line"></div>
+            <div class="fake-line"></div>
+            <div class="fake-line short"></div>
+          </div>
+          <div class="fake-card">
+            <h3>👩‍🍳 Preparación</h3>
+            <div class="fake-line"></div>
+            <div class="fake-line short"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="funciones">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Todo lo que necesitas para decidir qué cocinar</h2>
+          <p>Menos dudas, menos desperdicio y más comidas caseras.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📷</div>
+            <h3>Escanea tu refrigerador</h3>
+            <p>Toma una foto o elige una imagen de tu galería y SmartChef detecta los ingredientes que tienes.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">👥</div>
+            <h3>Porciones a tu medida</h3>
+            <p>Elige 1, 2, 4 o 6 porciones y la IA escala todas las cantidades de la receta.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🥗</div>
+            <h3>Tu dieta, tus reglas</h3>
+            <p>Vegetariano, vegano, keto y filtros de alérgenos para que cada receta sea segura para ti.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⏱️</div>
+            <h3>En el tiempo que tienes</h3>
+            <p>Filtra por 15, 30, 45 o 60 minutos y cocina sin prisas ni esperas.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📖</div>
+            <h3>Modo cocina paso a paso</h3>
+            <p>Instrucciones claras, temporizadores y lectura en voz alta mientras cocinas.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🔗</div>
+            <h3>Comparte recetas</h3>
+            <p>Envía cualquier receta por WhatsApp o genera un código QR para abrirla en otro teléfono.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Cocinar bien en tres pasos</h2>
+          <p>De la foto del refrigerador al plato, sin complicaciones.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Añade tus ingredientes</h3>
+            <p>Escríbelos, elígelos de la lista o escanea una foto de tu refrigerador.</p>
+          </article>
+          <article class="step">
+            <h3>Elige tiempo y porciones</h3>
+            <p>Ajusta el tiempo, el tipo de plato, la dificultad y cuántas personas van a comer.</p>
+          </article>
+          <article class="step">
+            <h3>Cocina y comparte</h3>
+            <p>Recibe una receta completa con cantidades exactas y compártela con quien quieras.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="descargar">
+      <div class="wrap">
+        <div class="download">
+          <div>
+            <h2>Empieza a cocinar con lo que ya tienes</h2>
+            <p>SmartChef está disponible para Android. La versión para iPhone llegará muy pronto.</p>
+          </div>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cooksmart.cooksmart_flutter" rel="noopener">
+              ▶ Google Play
+            </a>
+            <a class="btn btn-ghost" href="privacy.html">Política de Privacidad</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> SmartChef. Hecho para cocinas reales.</span>
+      <nav class="footer-links" aria-label="Enlaces del pie">
+        <a href="privacy.html">Privacidad</a>
+        <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a>
+        <a href="https://play.google.com/store/apps/details?id=com.cooksmart.cooksmart_flutter" rel="noopener">Google Play</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Política de Privacidad · SmartChef</title>
+  <meta name="description" content="Política de Privacidad de SmartChef: qué datos tratamos, para qué los usamos y cómo puedes ejercer tus derechos." />
+  <meta name="theme-color" content="#0B0B0F" />
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --surface: #15151d;
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #f6f6f8;
+      --muted: #a1a1ad;
+      --flame: #ff6b2c;
+      --flame-2: #ffb03a;
+      --flame-3: #ff3d00;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(800px 420px at 20% -10%, rgba(255, 107, 44, 0.14), transparent 62%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--flame-2); }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 11, 15, 0.72);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .wrap { width: min(880px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.05rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: linear-gradient(140deg, var(--flame-2), var(--flame-3));
+      font-size: 1rem;
+    }
+
+    .nav a.back {
+      font-size: 0.88rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav a.back:hover { color: var(--text); }
+
+    main { padding: 54px 0 72px; }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 107, 44, 0.35);
+      background: rgba(255, 107, 44, 0.10);
+      color: var(--flame-2);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(1.9rem, 4.4vw, 2.7rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .updated { margin: 0 0 30px; color: var(--muted); font-size: 0.9rem; }
+
+    .intro {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+      padding: 22px 24px;
+      margin-bottom: 34px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .intro strong { color: var(--text); }
+
+    .toc {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 20px 24px;
+      margin-bottom: 42px;
+    }
+
+    .toc h2 {
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+      columns: 2;
+      column-gap: 28px;
+      font-size: 0.92rem;
+    }
+
+    .toc li { margin-bottom: 4px; break-inside: avoid; }
+    .toc a { text-decoration: none; color: var(--text); }
+    .toc a:hover { color: var(--flame-2); }
+
+    h2 {
+      margin: 44px 0 12px;
+      font-size: 1.32rem;
+      letter-spacing: -0.02em;
+      scroll-margin-top: 84px;
+    }
+
+    h3 { margin: 24px 0 8px; font-size: 1.02rem; }
+
+    p { margin: 0 0 14px; }
+
+    ul { margin: 0 0 16px; padding-left: 22px; }
+    li { margin-bottom: 7px; }
+
+    .note {
+      border-left: 3px solid var(--flame);
+      background: rgba(255, 107, 44, 0.07);
+      border-radius: 0 12px 12px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+      font-size: 0.94rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 22px;
+      font-size: 0.9rem;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { background: rgba(255, 255, 255, 0.04); font-weight: 700; }
+
+    .contact {
+      border-radius: 20px;
+      border: 1px solid rgba(255, 107, 44, 0.28);
+      background:
+        radial-gradient(400px 180px at 15% 0%, rgba(255, 107, 44, 0.18), transparent 70%),
+        var(--surface);
+      padding: 26px;
+      margin-top: 40px;
+    }
+
+    .contact h2 { margin-top: 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .toc ol { columns: 1; }
+      main { padding-top: 38px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">🍳</span>
+        <span>SmartChef</span>
+      </a>
+      <a class="back" href="./">← Volver al inicio</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <span class="eyebrow">Legal</span>
+    <h1>Política de Privacidad</h1>
+    <p class="updated">Última actualización: 22 de noviembre de 2026 · Vigente desde esa fecha</p>
+
+    <div class="intro">
+      <strong>En resumen:</strong> SmartChef usa tus ingredientes, tus preferencias y —solo cuando tú lo
+      autorizas— fotos de tu cámara o galería para generar recetas. No vendemos tus datos. Puedes usar
+      la app sin cuenta para generar recetas y borrar tu cuenta cuando quieras escribiendo a
+      <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a>.
+    </div>
+
+    <nav class="toc" aria-label="Índice">
+      <h2>Contenido</h2>
+      <ol>
+        <li><a href="#responsable">Quién es el responsable</a></li>
+        <li><a href="#datos">Qué datos tratamos</a></li>
+        <li><a href="#finalidades">Para qué los usamos</a></li>
+        <li><a href="#camara">Cámara y galería</a></li>
+        <li><a href="#cuenta">Inicio de sesión y cuenta</a></li>
+        <li><a href="#supabase">Supabase</a></li>
+        <li><a href="#ia">Inteligencia artificial</a></li>
+        <li><a href="#anuncios">Anuncios de Google AdMob</a></li>
+        <li><a href="#compartir">Compartir recetas</a></li>
+        <li><a href="#terceros">Terceros y transferencias</a></li>
+        <li><a href="#conservacion">Conservación</a></li>
+        <li><a href="#seguridad">Seguridad</a></li>
+        <li><a href="#derechos">Tus derechos</a></li>
+        <li><a href="#menores">Menores de edad</a></li>
+        <li><a href="#cambios">Cambios a esta política</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="responsable">1. Quién es el responsable</h2>
+    <p>
+      SmartChef (la «app») es una aplicación móvil de asistencia culinaria. El responsable del
+      tratamiento de los datos personales descritos en esta política es el equipo desarrollador de
+      SmartChef, con domicilio de contacto en México y correo electrónico
+      <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a>.
+    </p>
+    <p>
+      Esta política aplica a la app para Android e iOS, a este sitio web y a los enlaces de recetas que
+      se comparten desde la app.
+    </p>
+
+    <h2 id="datos">2. Qué datos tratamos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th>Datos concretos</th>
+          <th>¿Es obligatorio?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cuenta</td>
+          <td>Correo electrónico, contraseña cifrada, nombre y foto de perfil (si inicias sesión con Google).</td>
+          <td>Solo si creas una cuenta.</td>
+        </tr>
+        <tr>
+          <td>Contenido culinario</td>
+          <td>Ingredientes que escribes o escaneas, preferencias (dieta, alérgenos, tiempo, dificultad, porciones), recetas generadas, recetas guardadas y recetas importadas.</td>
+          <td>Sí, para generar recetas.</td>
+        </tr>
+        <tr>
+          <td>Imágenes</td>
+          <td>Fotos de tu refrigerador, despensa o ingredientes que eliges tomar con la cámara o seleccionar de la galería.</td>
+          <td>Opcional: solo si usas el escaneo.</td>
+        </tr>
+        <tr>
+          <td>Datos técnicos</td>
+          <td>Modelo de dispositivo, sistema operativo, versión de la app, idioma, dirección IP y registros de errores.</td>
+          <td>Se generan automáticamente.</td>
+        </tr>
+        <tr>
+          <td>Publicidad</td>
+          <td>Identificador de publicidad del dispositivo, datos aproximados del dispositivo y de la red, e interacciones con los anuncios (solo si los anuncios están activos en tu versión).</td>
+          <td>Se gestiona con tu consentimiento cuando la ley lo exige.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      No solicitamos datos sensibles (salud, origen étnico, religión, datos biométricos ni financieros).
+      Te pedimos no incluir datos personales de otras personas en el texto de tus recetas.
+    </p>
+
+    <h2 id="finalidades">3. Para qué los usamos y con qué base legal</h2>
+    <ul>
+      <li><strong>Generar recetas y recomendaciones</strong> a partir de tus ingredientes y preferencias (ejecución del servicio que solicitas).</li>
+      <li><strong>Crear y mantener tu cuenta</strong>, sincronizar tus recetas guardadas y permitirte iniciar sesión en varios dispositivos (ejecución del contrato).</li>
+      <li><strong>Escanear imágenes</strong> para detectar ingredientes (tu consentimiento al conceder el permiso de cámara o galería).</li>
+      <li><strong>Mostrar anuncios</strong> que financian la versión gratuita, con personalización solo si la aceptas (consentimiento) o de forma no personalizada en caso contrario.</li>
+      <li><strong>Seguridad, prevención de abuso y solución de errores</strong> (interés legítimo en mantener el servicio seguro y funcional).</li>
+      <li><strong>Cumplir obligaciones legales</strong> y atender requerimientos de autoridades competentes (obligación legal).</li>
+    </ul>
+    <p>
+      Cuando la base legal sea tu consentimiento, puedes retirarlo en cualquier momento desde los
+      ajustes del sistema operativo o escribiéndonos. Retirarlo no afecta a la licitud del tratamiento
+      previo.
+    </p>
+
+    <h2 id="camara">4. Cámara y galería</h2>
+    <p>
+      SmartChef solicita acceso a la cámara y a la galería únicamente cuando eliges escanear tu
+      refrigerador o adjuntar una imagen. La app no accede a la cámara ni a tus fotos en segundo plano,
+      ni recorre tu galería completa: solo recibe la imagen que seleccionas.
+    </p>
+    <p>
+      La imagen se envía a nuestras funciones seguras en Supabase y, desde allí, al proveedor de
+      inteligencia artificial que corresponda para identificar ingredientes. No usamos esas imágenes
+      para publicidad, no las mostramos a otros usuarios y no las conservamos de forma permanente en
+      nuestros servidores; se procesan para devolverte el resultado y se descartan.
+    </p>
+    <p>
+      Puedes revocar los permisos en cualquier momento desde los ajustes de Android o iOS. Si los
+      revocas, el escaneo dejará de funcionar, pero podrás seguir escribiendo ingredientes a mano.
+    </p>
+
+    <h2 id="cuenta">5. Inicio de sesión y cuenta</h2>
+    <p>
+      Puedes iniciar sesión con Google o con correo y contraseña. Ambos métodos se gestionan mediante
+      Supabase Auth:
+    </p>
+    <ul>
+      <li>Con Google, recibimos tu correo, nombre y foto de perfil pública según los permisos que autorices en la pantalla de Google. No recibimos tu contraseña de Google.</li>
+      <li>Con correo y contraseña, la contraseña se almacena cifrada (hash) en Supabase; nunca la vemos ni la guardamos en texto plano.</li>
+      <li>Usamos tokens de sesión para mantenerte identificado. Puedes cerrar sesión desde la app en cualquier momento.</li>
+    </ul>
+    <p>
+      También puedes usar funciones básicas sin crear cuenta. En ese caso, las recetas generadas se
+      mantienen en tu dispositivo y no se sincronizan.
+    </p>
+
+    <h2 id="supabase">6. Supabase</h2>
+    <p>
+      Usamos Supabase como proveedor de infraestructura para autenticación, base de datos, almacenamiento
+      y funciones del servidor. Los datos se transmiten cifrados mediante HTTPS/TLS y las tablas aplican
+      reglas de seguridad por fila (RLS) para que cada usuario solo pueda acceder a su propia información.
+    </p>
+    <p>
+      Supabase puede alojar los datos en servidores ubicados fuera de México, incluidos Estados Unidos o
+      la Unión Europea. En esos casos aplicamos las garantías contractuales que correspondan para
+      proteger tus datos.
+    </p>
+
+    <h2 id="ia">7. Inteligencia artificial</h2>
+    <p>
+      Para crear recetas utilizamos proveedores de modelos de lenguaje de terceros, entre ellos Google
+      (Gemini), DeepSeek, Meta (Llama a través de Together AI) y Groq. La app envía a esos proveedores
+      únicamente la información necesaria: tus ingredientes, tus preferencias culinarias y, si usas el
+      escaneo, la imagen que elegiste.
+    </p>
+    <ul>
+      <li>No enviamos tu nombre, correo ni identificador de cuenta a los proveedores de IA.</li>
+      <li>No usamos el contenido de tus recetas para entrenar modelos propios ni autorizamos su uso con ese fin.</li>
+      <li>Los proveedores procesan la información conforme a sus propias políticas y acuerdos de servicio.</li>
+      <li>Las recetas generadas por IA pueden contener errores. Verifica siempre los ingredientes, la cocción y, especialmente, los alérgenos antes de consumir un plato.</li>
+    </ul>
+    <div class="note">
+      <strong>Alergias e intolerancias:</strong> SmartChef aplica filtros según tus preferencias, pero no
+      puede garantizar que una receta generada esté libre de trazas ni de contaminación cruzada. La
+      decisión final sobre lo que consumes es tuya.
+    </div>
+
+    <h2 id="anuncios">8. Anuncios de Google AdMob</h2>
+    <p>
+      La versión gratuita puede mostrar anuncios a través de Google AdMob (Google Mobile Ads). AdMob
+      puede recopilar el identificador de publicidad, la dirección IP, información aproximada del
+      dispositivo y datos de interacción con los anuncios para mostrar anuncios, limitar la frecuencia y
+      prevenir fraudes.
+    </p>
+    <ul>
+      <li>En Android, puedes restablecer o eliminar tu identificador de publicidad desde los ajustes del sistema.</li>
+      <li>En iOS, te pediremos permiso para rastrear (App Tracking Transparency) antes de acceder al identificador publicitario. Si lo rechazas, verás anuncios no personalizados.</li>
+      <li>Cuando la normativa lo exige, mostramos un formulario de consentimiento de Google para que elijas si aceptas anuncios personalizados.</li>
+      <li>Puedes consultar cómo trata Google estos datos en <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">policies.google.com/privacy</a> y gestionar la personalización en <a href="https://adssettings.google.com" rel="noopener" target="_blank">adssettings.google.com</a>.</li>
+    </ul>
+    <p>
+      Los usuarios con suscripción o compras que eliminan los anuncios no reciben estos tratamientos
+      publicitarios.
+    </p>
+
+    <h2 id="compartir">9. Compartir recetas</h2>
+    <p>
+      Cuando compartes una receta por WhatsApp, correo, QR o cualquier otra app, el enlace contiene los
+      datos de la receta codificados en la propia URL (título, ingredientes, pasos y porciones). Esto
+      permite abrirla sin depender de un servidor, pero implica que <strong>cualquier persona con el
+      enlace puede leer su contenido</strong>. Comparte solo las recetas que quieras hacer públicas.
+    </p>
+    <p>
+      SmartChef no recibe un registro de con quién compartes un enlace ni controla lo que la otra
+      persona haga con él.
+    </p>
+
+    <h2 id="terceros">10. Terceros y transferencias</h2>
+    <p>
+      <strong>No vendemos tus datos personales.</strong> Solo los compartimos con proveedores que nos
+      ayudan a operar el servicio:
+    </p>
+    <ul>
+      <li>Supabase (autenticación, base de datos, almacenamiento y funciones).</li>
+      <li>Google (inicio de sesión con Google, Gemini y AdMob).</li>
+      <li>DeepSeek, Together AI y Groq (generación de recetas con IA).</li>
+      <li>Google Play y App Store (distribución de la app y compras dentro de la app).</li>
+      <li>Autoridades públicas, cuando exista una obligación legal válida.</li>
+    </ul>
+    <p>
+      Estos proveedores pueden estar ubicados en otros países. Aplicamos medidas contractuales y
+      técnicas razonables para que tus datos mantengan un nivel de protección adecuado.
+    </p>
+
+    <h2 id="conservacion">11. Cuánto tiempo conservamos los datos</h2>
+    <ul>
+      <li><strong>Cuenta:</strong> mientras tu cuenta esté activa. Si la eliminas, borramos tus datos asociados en un plazo máximo de 30 días, salvo obligaciones legales de conservación.</li>
+      <li><strong>Recetas guardadas y preferencias:</strong> mientras las mantengas en tu cuenta o hasta que borres tu cuenta.</li>
+      <li><strong>Imágenes de escaneo:</strong> se procesan para generar el resultado y no se conservan de forma permanente.</li>
+      <li><strong>Registros técnicos y de errores:</strong> durante el tiempo necesario para diagnosticar fallos y proteger el servicio (normalmente hasta 90 días).</li>
+      <li><strong>Datos publicitarios:</strong> según los plazos de Google AdMob y tu configuración de consentimiento.</li>
+    </ul>
+
+    <h2 id="seguridad">12. Seguridad</h2>
+    <p>
+      Aplicamos medidas técnicas y organizativas razonables: cifrado en tránsito (HTTPS/TLS), reglas de
+      acceso por fila en la base de datos, separación de claves secretas en el servidor y acceso
+      restringido a la infraestructura. Ningún sistema es 100 % infalible, pero trabajamos para
+      proteger tu información y revisamos periódicamente nuestras prácticas.
+    </p>
+    <p>
+      Si detectas un problema de seguridad, escríbenos a
+      <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a>.
+    </p>
+
+    <h2 id="derechos">13. Tus derechos</h2>
+    <p>Puedes ejercer los siguientes derechos sobre tus datos personales:</p>
+    <ul>
+      <li><strong>Acceso:</strong> saber qué datos tenemos y obtener una copia.</li>
+      <li><strong>Rectificación:</strong> corregir datos inexactos o incompletos.</li>
+      <li><strong>Cancelación o supresión:</strong> pedir que borremos tus datos y tu cuenta.</li>
+      <li><strong>Oposición:</strong> oponerte a tratamientos concretos, como la publicidad personalizada.</li>
+      <li><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado cuando sea aplicable.</li>
+      <li><strong>Retirar el consentimiento</strong> en cualquier momento, sin afectar al tratamiento ya realizado.</li>
+      <li><strong>Limitar u oponerte</strong> al tratamiento cuando la ley de tu país lo reconozca.</li>
+    </ul>
+    <p>
+      Para ejercerlos, escríbenos a <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a>
+      indicando tu correo de cuenta y el derecho que deseas ejercer. Responderemos en un plazo máximo de
+      20 días hábiles. También puedes eliminar tu cuenta directamente desde la app, si la opción está
+      disponible en tu versión.
+    </p>
+    <p>
+      Si consideras que no atendimos correctamente tu solicitud, puedes acudir a la autoridad de
+      protección de datos de tu país. En México, al Instituto Nacional de Transparencia, Acceso a la
+      Información y Protección de Datos Personales (INAI). En la Unión Europea, a la autoridad de
+      control de tu país de residencia.
+    </p>
+
+    <h2 id="menores">14. Menores de edad</h2>
+    <p>
+      SmartChef no está dirigida a menores de 13 años y no recopilamos conscientemente datos de menores
+      de esa edad. Si eres padre, madre o tutor y crees que un menor nos proporcionó datos, escríbenos y
+      los eliminaremos. Entre los 13 y los 18 años, el uso debe contar con la autorización de tu padre,
+      madre o tutor legal.
+    </p>
+
+    <h2 id="cambios">15. Cambios a esta política</h2>
+    <p>
+      Podemos actualizar esta política para reflejar cambios en la app, en los proveedores o en la
+      normativa. Publicaremos la versión vigente en esta misma página con la fecha de actualización. Si
+      el cambio es relevante, lo avisaremos dentro de la app o por correo antes de que entre en vigor.
+    </p>
+
+    <h2 id="contacto">16. Contacto</h2>
+    <div class="contact">
+      <h2>¿Dudas sobre tus datos?</h2>
+      <p>
+        Escríbenos y te respondemos lo antes posible. También puedes consultar la
+        <a href="./">página principal de SmartChef</a>.
+      </p>
+      <p style="margin-bottom:0">
+        <strong>Correo:</strong>
+        <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a><br />
+        <strong>Responsable:</strong> Equipo SmartChef · México
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> SmartChef</span>
+      <span>
+        <a href="./">Inicio</a> ·
+        <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>

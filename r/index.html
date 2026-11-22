@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abrir receta · SmartChef</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0B0B0F" />
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --surface: #15151d;
+      --border: rgba(255, 255, 255, 0.10);
+      --text: #f6f6f8;
+      --muted: #a1a1ad;
+      --flame: #ff6b2c;
+      --flame-2: #ffb03a;
+      --flame-3: #ff3d00;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px 20px;
+      background:
+        radial-gradient(700px 420px at 50% -10%, rgba(255, 107, 44, 0.20), transparent 65%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .card {
+      width: min(460px, 100%);
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+      box-shadow: 0 34px 80px rgba(0, 0, 0, 0.50);
+      padding: 38px 30px 30px;
+      text-align: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.05rem;
+      text-decoration: none;
+      color: var(--text);
+      margin-bottom: 26px;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: linear-gradient(140deg, var(--flame-2), var(--flame-3));
+      box-shadow: 0 8px 24px rgba(255, 61, 0, 0.28);
+      font-size: 1.1rem;
+    }
+
+    .icon {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      font-size: 2rem;
+      background: rgba(255, 107, 44, 0.13);
+      border: 1px solid rgba(255, 107, 44, 0.30);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.96rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      margin-bottom: 12px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #1a0a00;
+      background: linear-gradient(135deg, var(--flame-2), var(--flame));
+      box-shadow: 0 12px 32px rgba(255, 107, 44, 0.28);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    .btn-ghost {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border);
+    }
+
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.08); }
+
+    .status {
+      margin-top: 18px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      min-height: 1.4em;
+    }
+
+    .error {
+      border-radius: 16px;
+      border: 1px solid rgba(255, 107, 44, 0.35);
+      background: rgba(255, 107, 44, 0.10);
+      padding: 16px;
+      color: #ffd2bd;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .hidden { display: none !important; }
+
+    .footer-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-decoration: none;
+    }
+
+    .footer-link:hover { color: var(--text); }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      border-top-color: var(--flame);
+      animation: spin 0.9s linear infinite;
+      vertical-align: -3px;
+      margin-right: 8px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner { animation: none; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <a class="brand" href="../">
+      <span class="brand-mark" aria-hidden="true">🍳</span>
+      <span>SmartChef</span>
+    </a>
+
+    <div id="content">
+      <div class="icon" aria-hidden="true">📖</div>
+      <h1>Abriendo tu receta…</h1>
+      <p id="message">Te estamos llevando a la app SmartChef.</p>
+
+      <a id="open-app" class="btn btn-primary" href="#">Abrir en SmartChef</a>
+      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.cooksmart.cooksmart_flutter" rel="noopener">
+        Descargar SmartChef
+      </a>
+
+      <div class="status" id="status" role="status" aria-live="polite">
+        <span class="spinner" aria-hidden="true"></span>Si no se abre sola, toca «Abrir en SmartChef».
+      </div>
+    </div>
+
+    <div id="error" class="error hidden" role="alert">
+      <strong>No pudimos leer esta receta.</strong><br />
+      El enlace está incompleto o dañado. Pide que te lo compartan de nuevo.
+    </div>
+
+    <a class="footer-link" href="../">Ir a SmartChef</a>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var APP_SCHEME = 'io.supabase.smartchef';
+      var PLAY_STORE =
+        'https://play.google.com/store/apps/details?id=com.cooksmart.cooksmart_flutter';
+      var PAYLOAD_PATTERN = /^[A-Za-z0-9_-]+$/;
+
+      var content = document.getElementById('content');
+      var errorBox = document.getElementById('error');
+      var openApp = document.getElementById('open-app');
+      var status = document.getElementById('status');
+
+      function readPayload() {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var value = (params.get('d') || '').trim();
+          if (!value || value.length > 60000) return null;
+          if (!PAYLOAD_PATTERN.test(value)) return null;
+          return value;
+        } catch (_error) {
+          return null;
+        }
+      }
+
+      function showError() {
+        content.classList.add('hidden');
+        errorBox.classList.remove('hidden');
+      }
+
+      var payload = readPayload();
+      if (!payload) {
+        showError();
+        return;
+      }
+
+      var deepLink =
+        APP_SCHEME + '://recipe?d=' + encodeURIComponent(payload);
+      openApp.setAttribute('href', deepLink);
+
+      var attempted = false;
+      function tryOpen() {
+        if (attempted) return;
+        attempted = true;
+        status.innerHTML =
+          '<span class="spinner" aria-hidden="true"></span>Buscando SmartChef en este dispositivo…';
+        window.location.href = deepLink;
+
+        // Si el sistema no abre la app (no está instalada), a los 2.5 s
+        // ofrecemos la descarga en lugar de dejar la página en silencio.
+        window.setTimeout(function () {
+          status.textContent =
+            '¿No se abrió? Instala SmartChef o toca «Abrir en SmartChef».';
+        }, 2500);
+      }
+
+      openApp.addEventListener('click', function (event) {
+        event.preventDefault();
+        tryOpen();
+      });
+
+      // Intento automático: algunos navegadores exigen un gesto del usuario,
+      // por eso el botón sigue disponible como respaldo.
+      window.setTimeout(tryOpen, 650);
+    })();
+  </script>
+</body>
+</html>
