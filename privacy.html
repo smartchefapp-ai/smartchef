@@ -6,6 +6,8 @@
   <title>Política de Privacidad · SmartChef</title>
   <meta name="description" content="Política de Privacidad de SmartChef: qué datos tratamos, para qué los usamos y cómo puedes ejercer tus derechos." />
   <meta name="theme-color" content="#0B0B0F" />
+  <link rel="icon" type="image/png" href="assets/app_icon.png" />
+  <link rel="apple-touch-icon" href="assets/app_icon.png" />
   <style>
     :root {
       --bg: #0b0b0f;
@@ -68,11 +70,10 @@
     .brand-mark {
       width: 34px;
       height: 34px;
-      display: grid;
-      place-items: center;
+      display: block;
+      flex: 0 0 auto;
       border-radius: 10px;
-      background: linear-gradient(140deg, var(--flame-2), var(--flame-3));
-      font-size: 1rem;
+      object-fit: cover;
     }
 
     .nav a.back {
@@ -217,6 +218,19 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
 
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .footer-brand img {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: block;
+    }
+
     @media (max-width: 640px) {
       .toc ol { columns: 1; }
       main { padding-top: 38px; }
@@ -231,7 +245,7 @@
   <header>
     <div class="wrap nav">
       <a class="brand" href="./">
-        <span class="brand-mark" aria-hidden="true">🍳</span>
+        <img class="brand-mark" src="assets/app_icon.png" alt="" width="34" height="34" />
         <span>SmartChef</span>
       </a>
       <a class="back" href="./">← Volver al inicio</a>
@@ -528,7 +542,10 @@
 
   <footer>
     <div class="wrap">
-      <span>© <span id="year">2026</span> SmartChef</span>
+      <span class="footer-brand">
+        <img src="assets/app_icon.png" alt="" width="22" height="22" />
+        <span>© <span id="year">2026</span> SmartChef</span>
+      </span>
       <span>
         <a href="./">Inicio</a> ·
         <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a>

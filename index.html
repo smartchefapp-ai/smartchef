@@ -10,7 +10,9 @@
   <meta property="og:description" content="Recetas con IA a partir de tus ingredientes. Escanea, elige porciones y cocina." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://smartchefapp-ai.github.io/smartchef/" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%B3%3C/text%3E%3C/svg%3E" />
+  <meta property="og:image" content="https://smartchefapp-ai.github.io/smartchef/assets/app_icon.png" />
+  <link rel="icon" type="image/png" href="assets/app_icon.png" />
+  <link rel="apple-touch-icon" href="assets/app_icon.png" />
   <style>
     :root {
       --bg: #0b0b0f;
@@ -78,12 +80,11 @@
     .brand-mark {
       width: 36px;
       height: 36px;
-      display: grid;
-      place-items: center;
+      display: block;
+      flex: 0 0 auto;
       border-radius: 11px;
-      background: linear-gradient(140deg, var(--flame-2), var(--flame-3));
+      object-fit: cover;
       box-shadow: 0 8px 24px rgba(255, 61, 0, 0.28);
-      font-size: 1.1rem;
     }
 
     .nav-links {
@@ -133,6 +134,13 @@
       background: rgba(255, 255, 255, 0.03);
       border-color: var(--border);
       cursor: default;
+    }
+
+    .store-icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      display: block;
     }
 
     .hero {
@@ -365,6 +373,19 @@
     .footer-links a { text-decoration: none; }
     .footer-links a:hover { color: var(--text); }
 
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .footer-brand img {
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      display: block;
+    }
+
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; padding-top: 56px; gap: 40px; }
       .grid, .steps { grid-template-columns: 1fr 1fr; }
@@ -388,7 +409,7 @@
   <header>
     <div class="wrap nav">
       <a class="brand" href="./">
-        <span class="brand-mark" aria-hidden="true">🍳</span>
+        <img class="brand-mark" src="assets/app_icon.png" alt="" width="36" height="36" />
         <span>SmartChef</span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
@@ -406,16 +427,27 @@
         <span class="eyebrow">🔥 Cocina inteligente</span>
         <h1>Convierte lo que tienes en <span class="gradient-text">una receta increíble</span></h1>
         <p class="lead">
-          SmartChef mira tu refrigerador, escucha tus ingredientes y diseña una receta
+          SmartChef mira tu refrigerador, analiza tus ingredientes y diseña una receta
           a tu medida: porciones exactas, tiempo real y pasos claros. Sin desperdiciar comida.
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cooksmart.cooksmart_flutter" rel="noopener">
-            ▶ Descargar en Google Play
+            <svg class="store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="#00A0FF" d="M3.609 1.814 13.792 12 3.61 22.186a1.7 1.7 0 0 1-.61-1.312V3.126c0-.52.24-.98.61-1.312z"/>
+              <path fill="#FFD400" d="M17.02 15.23l-3.228-3.23 3.228-3.23 4.04 2.29c.9.51.9 1.34 0 1.85l-4.04 2.32z"/>
+              <path fill="#FF3A44" d="M17.02 15.23l-3.228-3.23L3.61 22.186c.46.46 1.2.52 2.04.04l11.37-6.996z"/>
+              <path fill="#00F076" d="M17.02 8.77 5.65 1.774c-.84-.48-1.58-.42-2.04.04L13.792 12l3.228-3.23z"/>
+            </svg>
+            Descargar en Google Play
           </a>
-          <span class="btn btn-disabled" aria-disabled="true">🍎 App Store · próximamente</span>
+          <span class="btn btn-disabled" aria-disabled="true">
+            <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/>
+            </svg>
+            App Store · próximamente
+          </span>
         </div>
-        <p class="note">Gratis. Sin anuncios que interrumpan tu cocina.</p>
+        <p class="note">Gratis para empezar · Incluye 3 recetas diarias con IA</p>
       </div>
 
       <div class="phone" aria-hidden="true">
@@ -525,7 +557,13 @@
           </div>
           <div class="cta-row">
             <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cooksmart.cooksmart_flutter" rel="noopener">
-              ▶ Google Play
+              <svg class="store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="#00A0FF" d="M3.609 1.814 13.792 12 3.61 22.186a1.7 1.7 0 0 1-.61-1.312V3.126c0-.52.24-.98.61-1.312z"/>
+                <path fill="#FFD400" d="M17.02 15.23l-3.228-3.23 3.228-3.23 4.04 2.29c.9.51.9 1.34 0 1.85l-4.04 2.32z"/>
+                <path fill="#FF3A44" d="M17.02 15.23l-3.228-3.23L3.61 22.186c.46.46 1.2.52 2.04.04l11.37-6.996z"/>
+                <path fill="#00F076" d="M17.02 8.77 5.65 1.774c-.84-.48-1.58-.42-2.04.04L13.792 12l3.228-3.23z"/>
+              </svg>
+              Google Play
             </a>
             <a class="btn btn-ghost" href="privacy.html">Política de Privacidad</a>
           </div>
@@ -536,7 +574,10 @@
 
   <footer>
     <div class="wrap footer-inner">
-      <span>© <span id="year">2026</span> SmartChef. Hecho para cocinas reales.</span>
+      <span class="footer-brand">
+        <img src="assets/app_icon.png" alt="" width="24" height="24" />
+        <span>© <span id="year">2026</span> SmartChef. Hecho para cocinas reales.</span>
+      </span>
       <nav class="footer-links" aria-label="Enlaces del pie">
         <a href="privacy.html">Privacidad</a>
         <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a>
