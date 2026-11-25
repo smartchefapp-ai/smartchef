@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Condiciones del Servicio · SmartChef</title>
+  <meta name="description" content="Condiciones del Servicio de SmartChef: uso de la app, planes, contenido generado por IA, alergias y responsabilidad." />
+  <meta name="theme-color" content="#0B0B0F" />
+  <link rel="icon" type="image/png" href="assets/app_icon.png" />
+  <link rel="apple-touch-icon" href="assets/app_icon.png" />
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --surface: #15151d;
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #f6f6f8;
+      --muted: #a1a1ad;
+      --flame: #ff6b2c;
+      --flame-2: #ffb03a;
+      --flame-3: #ff3d00;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(800px 420px at 20% -10%, rgba(255, 107, 44, 0.14), transparent 62%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--flame-2); }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 11, 15, 0.72);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .wrap { width: min(880px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.05rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: block;
+      flex: 0 0 auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .nav a.back {
+      font-size: 0.88rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav a.back:hover { color: var(--text); }
+
+    main { padding: 54px 0 72px; }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 107, 44, 0.35);
+      background: rgba(255, 107, 44, 0.10);
+      color: var(--flame-2);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(1.9rem, 4.4vw, 2.7rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .updated { margin: 0 0 30px; color: var(--muted); font-size: 0.9rem; }
+
+    .intro {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+      padding: 22px 24px;
+      margin-bottom: 34px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .intro strong { color: var(--text); }
+
+    .toc {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 20px 24px;
+      margin-bottom: 42px;
+    }
+
+    .toc h2 {
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+      columns: 2;
+      column-gap: 28px;
+      font-size: 0.92rem;
+    }
+
+    .toc li { margin-bottom: 4px; break-inside: avoid; }
+    .toc a { text-decoration: none; color: var(--text); }
+    .toc a:hover { color: var(--flame-2); }
+
+    h2 {
+      margin: 44px 0 12px;
+      font-size: 1.32rem;
+      letter-spacing: -0.02em;
+      scroll-margin-top: 84px;
+    }
+
+    h3 { margin: 24px 0 8px; font-size: 1.02rem; }
+
+    p { margin: 0 0 14px; }
+
+    ul { margin: 0 0 16px; padding-left: 22px; }
+    li { margin-bottom: 7px; }
+
+    .note {
+      border-left: 3px solid var(--flame);
+      background: rgba(255, 107, 44, 0.07);
+      border-radius: 0 12px 12px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+      font-size: 0.94rem;
+    }
+
+    .danger {
+      border-left: 3px solid #e5484d;
+      background: rgba(229, 72, 77, 0.08);
+      border-radius: 0 12px 12px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+      font-size: 0.94rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 22px;
+      font-size: 0.9rem;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { background: rgba(255, 255, 255, 0.04); font-weight: 700; }
+
+    .contact {
+      border-radius: 20px;
+      border: 1px solid rgba(255, 107, 44, 0.28);
+      background:
+        radial-gradient(400px 180px at 15% 0%, rgba(255, 107, 44, 0.18), transparent 70%),
+        var(--surface);
+      padding: 26px;
+      margin-top: 40px;
+    }
+
+    .contact h2 { margin-top: 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .footer-brand img {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: block;
+    }
+
+    @media (max-width: 640px) {
+      .toc ol { columns: 1; }
+      main { padding-top: 38px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="./">
+        <img class="brand-mark" src="assets/app_icon.png" alt="" width="34" height="34" />
+        <span>SmartChef</span>
+      </a>
+      <a class="back" href="./">← Volver al inicio</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <span class="eyebrow">Legal</span>
+    <h1>Condiciones del Servicio</h1>
+    <p class="updated">Última actualización: 24 de noviembre de 2026 · Vigente desde esa fecha</p>
+
+    <div class="intro">
+      <strong>En resumen:</strong> SmartChef te ayuda a generar recetas con inteligencia artificial a
+      partir de tus ingredientes. Es una herramienta de apoyo: <strong>tú decides qué cocinar y qué
+      comer</strong>. Revisa siempre los ingredientes, las cantidades y las instrucciones, y consulta a
+      un profesional si tienes alergias, intolerancias o condiciones médicas.
+    </div>
+
+    <nav class="toc" aria-label="Índice">
+      <h2>Contenido</h2>
+      <ol>
+        <li><a href="#aceptacion">Aceptación de las condiciones</a></li>
+        <li><a href="#servicio">Descripción del servicio</a></li>
+        <li><a href="#cuenta">Tu cuenta</a></li>
+        <li><a href="#uso">Uso aceptable</a></li>
+        <li><a href="#ia">Contenido generado por IA</a></li>
+        <li><a href="#alergias">Alergias y seguridad alimentaria</a></li>
+        <li><a href="#planes">Planes y pagos</a></li>
+        <li><a href="#anuncios">Anuncios</a></li>
+        <li><a href="#propiedad">Propiedad intelectual</a></li>
+        <li><a href="#disponibilidad">Disponibilidad y cambios</a></li>
+        <li><a href="#responsabilidad">Limitación de responsabilidad</a></li>
+        <li><a href="#baja">Eliminar tu cuenta</a></li>
+        <li><a href="#ley">Ley aplicable</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="aceptacion">1. Aceptación de las condiciones</h2>
+    <p>
+      Estas Condiciones del Servicio (las «Condiciones») regulan el uso de la aplicación móvil
+      SmartChef para Android e iOS, de este sitio web y de los enlaces de recetas compartidos desde la
+      app (en conjunto, el «Servicio»).
+    </p>
+    <p>
+      Al descargar, instalar o usar SmartChef aceptas estas Condiciones y nuestra
+      <a href="privacy.html">Política de Privacidad</a>. Si no estás de acuerdo, no uses el Servicio.
+    </p>
+    <p>
+      Debes tener al menos 13 años para usar SmartChef. Si eres menor de edad, necesitas la autorización
+      de tu padre, madre o tutor legal.
+    </p>
+
+    <h2 id="servicio">2. Descripción del servicio</h2>
+    <p>
+      SmartChef genera recetas, sugerencias de cocina e ideas de menús a partir de los ingredientes,
+      preferencias y fotografías que tú proporcionas. También permite guardar recetas, compartirlas y
+      escanear ingredientes con la cámara.
+    </p>
+    <p>
+      El Servicio puede incluir funciones gratuitas con anuncios y funciones Premium de pago. Algunas
+      funciones requieren conexión a internet y el uso de proveedores externos de inteligencia
+      artificial, alojamiento o publicidad.
+    </p>
+
+    <h2 id="cuenta">3. Tu cuenta</h2>
+    <ul>
+      <li>Puedes usar SmartChef como Invitado, sin crear una cuenta. En ese modo tus recetas se guardan solo en tu dispositivo.</li>
+      <li>Si creas una cuenta, eres responsable de mantener la confidencialidad de tu contraseña y de la actividad realizada con ella.</li>
+      <li>Debes proporcionar un correo electrónico válido y mantenerlo actualizado.</li>
+      <li>No compartas tu cuenta ni suplantes la identidad de otra persona.</li>
+      <li>Puedes eliminar tu cuenta en cualquier momento desde la app o por correo electrónico (ver la sección 12).</li>
+    </ul>
+
+    <h2 id="uso">4. Uso aceptable</h2>
+    <p>Al usar SmartChef te comprometes a no:</p>
+    <ul>
+      <li>Usar el Servicio para fines ilegales, fraudulentos o engañosos.</li>
+      <li>Intentar acceder a cuentas, servidores o datos de otras personas.</li>
+      <li>Automatizar, sobrecargar o interferir con el funcionamiento del Servicio.</li>
+      <li>Copiar, revender o explotar comercialmente el Servicio sin autorización escrita.</li>
+      <li>Subir contenido que infrinja derechos de terceros, sea ofensivo o contenga malware.</li>
+    </ul>
+    <p>
+      Podemos suspender o cancelar el acceso si detectamos un uso que incumpla estas Condiciones o que
+      ponga en riesgo la seguridad del Servicio o de otros usuarios.
+    </p>
+
+    <h2 id="ia">5. Contenido generado por inteligencia artificial</h2>
+    <p>
+      Las recetas, descripciones, tiempos de cocción, cantidades e imágenes se generan
+      automáticamente mediante modelos de inteligencia artificial y pueden contener errores,
+      imprecisiones o resultados incompletos.
+    </p>
+    <div class="note">
+      <strong>Verifica siempre el resultado.</strong> Antes de cocinar o consumir cualquier preparación,
+      revisa los ingredientes reales, las etiquetas de los productos, las cantidades y que la comida
+      esté bien cocida. La IA no conoce el estado de tus alimentos ni tu historial médico.
+    </div>
+    <p>
+      SmartChef no garantiza que una receta sea adecuada para tus necesidades, gustos, presupuesto o
+      restricciones. El uso de las recetas y de las sugerencias es responsabilidad del usuario.
+    </p>
+
+    <h2 id="alergias">6. Alergias y seguridad alimentaria</h2>
+    <div class="danger">
+      <strong>Importante:</strong> SmartChef no es un dispositivo médico ni un servicio de nutrición
+      clínica. Las recetas pueden incluir o entrar en contacto con alérgenos aunque indiques
+      preferencias o restricciones.
+    </div>
+    <p>
+      Si tienes alergias, intolerancias, celiaquía, diabetes u otra condición de salud, no confíes
+      únicamente en la app: comprueba cada ingrediente y cada etiqueta, evita la contaminación cruzada y
+      consulta a un profesional de la salud o a un dietista certificado.
+    </p>
+    <p>
+      En la medida máxima permitida por la ley, SmartChef no se hace responsable de reacciones
+      alérgicas, intoxicaciones, lesiones o daños derivados del uso de una receta generada o sugerida
+      por el Servicio.
+    </p>
+
+    <h2 id="planes">7. Planes y pagos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Qué incluye</th>
+          <th>Cómo se cobra</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gratis</td>
+          <td>Generación de recetas con límites de uso y anuncios recompensados.</td>
+          <td>Sin costo.</td>
+        </tr>
+        <tr>
+          <td>Premium</td>
+          <td>Más generaciones, funciones adicionales y una experiencia sin los límites del plan Gratis.</td>
+          <td>Suscripción de pago a través de Google Play o la App Store.</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>Los precios, la duración y las condiciones de la suscripción se muestran en la tienda antes de confirmar la compra.</li>
+      <li>Las suscripciones se renuevan automáticamente salvo que las canceles antes de la fecha de renovación desde tu cuenta de Google Play o de la App Store.</li>
+      <li>Los reembolsos se rigen por las políticas de la tienda correspondiente. SmartChef no procesa pagos directamente ni almacena datos de tarjetas.</li>
+      <li>Puedes restaurar compras activas desde la pantalla de ajustes de la app.</li>
+    </ul>
+
+    <h2 id="anuncios">8. Anuncios</h2>
+    <p>
+      El plan Gratis puede mostrar anuncios, incluidos anuncios recompensados que el usuario decide ver
+      para desbloquear funciones. Los anuncios los sirve Google AdMob y se rigen por las políticas de
+      Google. Consulta la sección correspondiente de la
+      <a href="privacy.html">Política de Privacidad</a>.
+    </p>
+
+    <h2 id="propiedad">9. Propiedad intelectual</h2>
+    <p>
+      La app, su diseño, su marca, sus textos y su código son propiedad del equipo de SmartChef o de sus
+      licenciantes y están protegidos por las leyes de propiedad intelectual.
+    </p>
+    <p>
+      Las recetas que generas con tus ingredientes y preferencias puedes usarlas y compartirlas
+      libremente para fines personales. No puedes revender el Servicio ni presentarlo como propio.
+    </p>
+
+    <h2 id="disponibilidad">10. Disponibilidad y cambios</h2>
+    <p>
+      Podemos modificar, actualizar o interrumpir funciones del Servicio por motivos técnicos,
+      comerciales o de seguridad. No garantizamos que el Servicio esté disponible de forma ininterrumpida
+      o libre de errores.
+    </p>
+    <p>
+      Si cambiamos estas Condiciones de forma relevante, actualizaremos la fecha de «Última
+      actualización» y, cuando proceda, te avisaremos dentro de la app o por correo electrónico. El uso
+      continuado del Servicio después de un cambio implica su aceptación.
+    </p>
+
+    <h2 id="responsabilidad">11. Limitación de responsabilidad</h2>
+    <p>
+      En la medida máxima permitida por la ley aplicable, SmartChef y su equipo no serán responsables de
+      daños indirectos, incidentales, especiales o consecuentes, ni de la pérdida de datos, beneficios o
+      oportunidades, derivados del uso o de la imposibilidad de usar el Servicio.
+    </p>
+    <p>
+      Nada en estas Condiciones excluye responsabilidades que no puedan excluirse legalmente, como las
+      derivadas de dolo o negligencia grave, ni afecta a los derechos que la ley reconoce a los
+      consumidores.
+    </p>
+
+    <h2 id="baja">12. Eliminar tu cuenta</h2>
+    <p>Puedes eliminar tu cuenta y tus datos de dos formas:</p>
+    <ul>
+      <li>
+        <strong>Desde la app:</strong> abre <em>El Súper Menú</em> → <em>Cuenta</em> →
+        <em>Eliminar mi cuenta y datos</em> y confirma la acción. El borrado es inmediato.
+      </li>
+      <li>
+        <strong>Por correo:</strong> escribe a
+        <a href="mailto:smartchefsupport@gmail.com?subject=Eliminar%20mi%20cuenta">smartchefsupport@gmail.com</a>
+        desde el correo asociado a tu cuenta. Te responderemos en un plazo máximo de 30 días.
+      </li>
+    </ul>
+    <p>
+      Consulta la página <a href="delete-account.html">Eliminar mi cuenta</a> para ver el detalle de qué
+      datos se borran.
+    </p>
+
+    <h2 id="ley">13. Ley aplicable</h2>
+    <p>
+      Estas Condiciones se rigen por las leyes de los Estados Unidos Mexicanos, sin perjuicio de las
+      normas obligatorias de protección al consumidor que resulten aplicables en tu país de residencia.
+    </p>
+    <p>
+      Cualquier controversia se resolverá preferentemente de forma amistosa. Si no fuera posible,
+      se someterá a los tribunales competentes de México, salvo que la ley te otorgue otro fuero.
+    </p>
+
+    <div class="contact" id="contacto">
+      <h2>14. Contacto</h2>
+      <p>
+        ¿Tienes dudas sobre estas Condiciones, tu suscripción o tu cuenta? Escríbenos y te respondemos lo
+        antes posible.
+      </p>
+      <p style="margin-bottom:0">
+        <strong>Correo:</strong>
+        <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a><br />
+        <strong>Responsable:</strong> Equipo SmartChef · México
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span class="footer-brand">
+        <img src="assets/app_icon.png" alt="" width="22" height="22" />
+        <span>© <span id="year">2026</span> SmartChef</span>
+      </span>
+      <span>
+        <a href="./">Inicio</a> ·
+        <a href="privacy.html">Privacidad</a> ·
+        <a href="delete-account.html">Eliminar mi cuenta</a> ·
+        <a href="mailto:smartchefsupport@gmail.com">smartchefsupport@gmail.com</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
